@@ -1,0 +1,50 @@
+<div class="container mt-4">
+    <h1 class="display-4 text-center">
+        <i class="fas fa-passport"></i>
+        <span class="text-primary">Outages</span> /Major</h1>
+    <form method="POST" action="/add">
+        <div class="form-group">
+            <label for="ticket">Ticket</label>
+            <input type="text" name="ticket" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="mimid">MIM ID</label>
+            <input type="text" name="mimid" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="cause">Cause</label>
+            <input type="text" name="cause" class="form-control">
+        </div>
+        <input type="submit" value="Add Row" class="btn btn-primary btn-block">
+    </form>
+    {{#if issueArray}}
+    <table class="table table-striped mt-5">
+        <thead>
+            <tr>
+                <th>Ticket</th>
+                <th>MIM ID</th>
+                <th>description</th>
+                <th>Cause</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="row-list">
+            {{#each issueArray}}
+            <tr>
+                <td>{{ticket}}</td>
+                <td>{{mimid}}</td>
+                <td>{{description}}</td>
+                <td>{{cause}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <form method="POST" action="/mail">
+        <input type="submit" value="Mail Us" class="btn btn-primary btn-block">
+    </form>
+    {{/if}}
+</div>
